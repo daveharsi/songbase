@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SongBase</title>
+  </head>
+  <body>
+    {# this is the jinja comment #}
+      <h1>This is the song list:</h1>
+      <ul>
+      {% for song in songs %}
+        <li>{{song}}</li>
+      {% endfor %}
+    </ul>
+    <img src="{{ url_for('static', filename='img/songbase-logo.png') }}"
+     alt="SongBase">
+  </body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+{{super()}}
+{%block head%}
+<style>
+  h1 {
+    color:blue;
+  }
+  </style>
+  {% endblock%}
+{% block title%}
+  My Song
+{% endblock%}
+{% block page_content%}
+    <h1>This is my songs</h1>
+{% endblock%}
