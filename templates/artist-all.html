@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+{% block title%}
+  All Artists
+{% endblock%}
+{% block page_content%}
+    <h1>This page shows all artists</h1>
+    {% for artist in artists %}
+      <h3>{{artist.name}}</h3>
+      <p>{{artist.about}}</p>
+    {% endfor%}
+{% endblock%}
