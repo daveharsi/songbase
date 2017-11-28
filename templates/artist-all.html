@@ -9,5 +9,6 @@
     {% for artist in artists %}
       <h3>{{artist.name}}</h3>
       <p>{{artist.about}}</p>
+      <a href="/artist/edit/{{artist.id}}" class="btn btn-success" role="button">Edit</a>
     {% endfor%}
 {% endblock%}

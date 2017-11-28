@@ -63,6 +63,40 @@ def add_artists():
         return redirect(url_for('show_all_artists'))
 
 
+@app.route('/artist/edit/<int:id>', methods=['GET', 'POST'])
+def edit_artist(id):
+    artist = Artist.query.filter_by(id=id).first()
+    if request.method == 'GET':
+        return render_template('artist-edit.html', artist=artist)
+    if request.method == 'POST':
+        # update data based on the form data
+        artist.name = request.form['name']
+        artist.about = request.form['about']
+        # update the database
+        db.session.commit()
+        return redirect(url_for('show_all_artists'))
+
+
+@app.route('/song/add', methods=['GET', 'POST'])
+def add_songs():
+    if request.method == 'GET':
+        artists = Artist.query.all()
+        return render_template('song-add.html', artists=artists)
+    if request.method == 'POST':
+        # get data from the form
+        name = request.form['name']
+        year = request.form['year']
+        lyrics = request.form['lyrics']
+        artist_name = request.form['artist']
+        artist = Artist.query.filter_by(name=artist_name).first()
+        song = Song(name=name, year=year, lyrics=lyrics, artist=artist)
+
+        # insert the data into the database
+        db.session.add(song)
+        db.session.commit()
+        return redirect(url_for('show_all_songs'))
+
+
 @app.route('/form-demo', methods = ['GET', 'POST'])
 def form_demo():
     if request.method == 'GET':
